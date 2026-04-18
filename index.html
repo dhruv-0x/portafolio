@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Portafolio de Juan Gomez</title>
+  <meta name="description" content="Portafolio de desarrollo de Juan Gomez." />
+  <style>
+    :root {
+      ([bgyato.com](https://bgyato.com/?utm_source=chatgpt.com))81320;
+      --bg-3: #23162a;
+      --panel: rgba(34, 25, 44, 0.72);
+      --panel-strong: rgba(47, 34, 60, 0.86);
+      --line: rgba(255,255,255,0.08);
+      --text: #fff6ef;
+      --muted: #d9c9c1;
+      --muted-2: #bdaea9;
+      --peach: #ff9c73;
+      --apricot: #ffbe7a;
+      --rose: #ff82ad;
+      --mint: #8ff6cf;
+      --sky: #8ecfff;
+      --orchid: #d598ff;
+      --ink: #241922;
+      --shadow: 0 24px 80px rgba(0,0,0,.42);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 12%, rgba(255,156,115,.16), transparent 22%),
+        radial-gradient(circle at 88% 14%, rgba(213,152,255,.13), transparent 22%),
+        radial-gradient(circle at 50% 100%, rgba(143,246,207,.08), transparent 25%),
+        linear-gradient(180deg, #0f0d17 0%, #15101d 36%, #110f19 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+      background-image:
+        radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,.018) 1px, transparent 1px);
+      background-size: 22px 22px, 44px 44px;
+      background-position: 0 0, 11px 11px;
+      opacity: .16;
+      mix-blend-mode: screen;
+    }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    .blur-spot {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .22;
+      animation: slowFloat 14s ease-in-out infinite;
+    }
+
+    .blur-spot.one {
+      width: 360px;
+      height: 360px;
+      background: rgba(255,156,115,.48);
+      top: -100px;
+      left: -90px;
+    }
+
+    .blur-spot.two {
+      width: 320px;
+      height: 320px;
+      background: rgba(142,207,255,.28);
+      right: -90px;
+      top: 180px;
+      animation-delay: -4s;
+    }
+
+    .blur-spot.three {
+      width: 340px;
+      height: 340px;
+      background: rgba(213,152,255,.22);
+      left: 30%;
+      bottom: -110px;
+      animation-delay: -8s;
+    }
+
+    @keyframes slowFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(32px,18px) scale(1.08); }
+    }
+
+    .floating-code {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .symbol {
+      position: absolute;
+      user-select: none;
+      white-space: nowrap;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      opacity: .15;
+      animation: drift var(--duration) linear infinite alternate;
+      text-shadow: 0 0 24px rgba(255,255,255,.04);
+    }
+
+    @keyframes drift {
+      0% { transform: translate3d(0,0,0) rotate(0deg); }
+      25% { transform: translate3d(var(--x1), var(--y1), 0) rotate(4deg); }
+      50% { transform: translate3d(var(--x2), var(--y2), 0) rotate(-3deg); }
+      75% { transform: translate3d(var(--x3), var(--y3), 0) rotate(2deg); }
+      100% { transform: translate3d(var(--x4), var(--y4), 0) rotate(-4deg); }
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      backdrop-filter: blur(18px);
+      background: rgba(13,10,19,.56);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--peach), var(--orchid));
+      color: var(--ink);
+      font-weight: 900;
+      box-shadow: 0 16px 40px rgba(255,156,115,.22);
+    }
+
+    .brand-text {
+      font-weight: 800;
+      letter-spacing: .01em;
+    }
+
+    .brand-text small {
+      display: block;
+      color: var(--muted-2);
+      font-size: .84rem;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-links a,
+    .btn {
+      text-decoration: none;
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 12px 16px;
+      transition: .25s ease;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .nav-links a:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .btn-primary {
+      color: var(--ink);
+      font-weight: 700;
+      border: none;
+      background: linear-gradient(135deg, var(--apricot), var(--peach));
+      box-shadow: 0 14px 34px rgba(255,156,115,.18);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, rgba(143,246,207,.12), rgba(142,207,255,.10));
+      border-color: rgba(143,246,207,.14);
+    }
+
+    .hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 28px;
+      align-items: center;
+      padding: 52px 0 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #241514;
+      background: linear-gradient(135deg, var(--mint), #dbffef);
+      box-shadow: 0 10px 30px rgba(143,246,207,.12);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      max-width: 820px;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: .93;
+      letter-spacing: -3px;
+    }
+
+    .gradient-title {
+      background: linear-gradient(90deg, #fff7ee 0%, #ffd39b 24%, #ff9c73 48%, #d598ff 74%, #92ddff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions,
+    .mini-pills,
+    .card-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mini-pills { margin-top: 8px; }
+
+    .mini-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .glass,
+    .showcase-panel,
+    .feature-card,
+    .metric,
+    .stack-card,
+    .card,
+    .timeline-card,
+    .panel,
+    .contact-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-side {
+      position: relative;
+    }
+
+    .showcase-panel {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        radial-gradient(circle at 18% 18%, rgba(255,156,115,.11), transparent 28%),
+        radial-gradient(circle at 84% 14%, rgba(213,152,255,.10), transparent 28%),
+        rgba(34,25,44,.84);
+    }
+
+    .showcase-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .dot-row {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot-row span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+    }
+
+    .showcase-content {
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+    }
+
+    .code-block {
+      min-height: 290px;
+      border-radius: 24px;
+      padding: 20px;
+      background: rgba(10,9,16,.50);
+      border: 1px solid rgba(255,255,255,.05);
+      font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+      line-height: 1.9;
+      color: #f6e0cc;
+    }
+
+    .code-key { color: #92ddff; }
+    .code-value { color: #ffc480; }
+    .code-accent { color: #ff9c73; }
+    .code-note { color: #b6a2c4; }
+
+    .preview-grid {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .preview-card {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .preview-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .preview-card span {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(143,246,207,.12);
+      color: #cffff0;
+      border: 1px solid rgba(143,246,207,.16);
+      font-size: .88rem;
+    }
+
+    .floating-sticker {
+      position: absolute;
+      right: -8px;
+      bottom: -14px;
+      transform: rotate(-8deg);
+      padding: 16px 18px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--peach), var(--rose));
+      color: var(--ink);
+      font-weight: 800;
+      box-shadow: 0 20px 40px rgba(255,130,173,.15);
+      animation: stickerFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes stickerFloat {
+      0%,100% { transform: rotate(-8deg) translateY(0); }
+      50% { transform: rotate(-6deg) translateY(-8px); }
+    }
+
+    section { padding: 34px 0 20px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      letter-spacing: -1.4px;
+    }
+
+    .section-head p {
+      max-width: 760px;
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .about-band,
+    .stack-grid,
+    .timeline,
+    .grid,
+    .contact-section,
+    .metric-row {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-band {
+      grid-template-columns: 1.1fr .9fr;
+    }
+
+    .feature-card,
+    .metric,
+    .stack-card,
+    .timeline-card,
+    .panel,
+    .contact-box {
+      border-radius: 28px;
+      padding: 22px;
+    }
+
+    .feature-card h3,
+    .stack-card h3,
+    .timeline-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .feature-card p,
+    .stack-card p,
+    .timeline-card p,
+    .contact-box p,
+    .small {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: .96rem;
+    }
+
+    .metric-row {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #fff0dd;
+    }
+
+    .stack-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .stack-card {
+      position: relative;
+      overflow: hidden;
+      transition: .28s ease;
+    }
+
+    .stack-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -18px -22px auto;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.12), transparent 68%);
+    }
+
+    .stack-card:hover {
+      transform: translateY(-6px) rotate(-.5deg);
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .stack-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 14px;
+      font-size: 1.45rem;
+      background: rgba(255,255,255,.06);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr auto;
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      border-radius: 16px;
+      outline: none;
+      font: inherit;
+      transition: .2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(255,190,122,.48);
+      box-shadow: 0 0 0 4px rgba(255,156,115,.10);
+    }
+
+    textarea { min-height: 130px; resize: vertical; }
+
+    .grid { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      border-radius: 28px;
+      overflow: hidden;
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform .7s ease, opacity .7s ease, border-color .2s ease;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
+        rgba(34,25,44,.82);
+    }
+
+    .card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) rotate(-.3deg);
+      border-color: rgba(255,255,255,.16);
+    }
+
+    .card-media {
+      height: 230px;
+      display: grid;
+      place-items: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,190,122,.22), transparent 30%),
+        radial-gradient(circle at 80% 18%, rgba(213,152,255,.18), transparent 28%),
+        linear-gradient(135deg, rgba(255,156,115,.12), rgba(142,207,255,.12)),
+        #1f1728;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .card-media::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 24px;
+      border: 1px dashed rgba(255,255,255,.08);
+    }
+
+    .card-body { padding: 22px; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      white-space: nowrap;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: .92rem;
+      font-weight: 700;
+      color: #281b0f;
+      background: linear-gradient(135deg, var(--mint), #dffef0);
+      border: 1px solid rgba(143,246,207,.18);
+    }
+
+    .muted { color: var(--muted); }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .timeline { grid-template-columns: repeat(3, 1fr); }
+
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,156,115,.22), transparent 70%);
+    }
+
+    .step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--muted-2);
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .step::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--apricot), var(--peach));
+      box-shadow: 0 0 18px rgba(255,156,115,.4);
+    }
+
+    .contact-section {
+      grid-template-columns: 1fr .95fr;
+      align-items: start;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-item strong { display: block; margin-bottom: 4px; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .admin-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 8px 0 18px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .admin-panel { display: none; margin-top: 16px; }
+    .admin-panel.active { display: block; }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px dashed rgba(255,255,255,.16);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 100;
+      background: rgba(9,7,16,.78);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-card {
+      width: min(780px, 100%);
+      border-radius: 30px;
+      overflow: hidden;
+      background: #1b1524;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-head,
+    .modal-body { padding: 22px; }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .modal-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      cursor: pointer;
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 1.15rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,156,115,.14);
+      color: #ffd9cb;
+      border: 1px solid rgba(255,156,115,.16);
+      font-size: .9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      padding: 36px 0 54px;
+      text-align: center;
+      color: var(--muted-2);
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .about-band,
+      .stack-grid,
+      .timeline,
+      .grid,
+      .contact-section,
+      .toolbar,
+      .metric-row,
+      .showcase-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 42px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .about-band,
+      .stack-grid,
+      .timeline,
+      .grid,
+      .contact-section,
+      .toolbar,
+      .metric-row,
+      .showcase-content,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 12vw, 4.3rem);
+        letter-spacing: -2px;
+      }
+
+      .floating-sticker {
+        position: static;
+        width: fit-content;
+        margin: 12px 0 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient">
+    <div class="blur-spot one"></div>
+    <div class="blur-spot two"></div>
+    <div class="blur-spot three"></div>
+  </div>
+  <div class="floating-code" id="floatingCode"></div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-mark">JG</div>
+        <div class="brand-text">
+          Juan Gómez
+          <small>Ingeniería de Sistemas · Portafolio de desarrollo</small>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-mi">Perfil</a>
+        <a href="#stack">Stack</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="container hero">
+      <div class="reveal visible">
+        <div class="eyebrow">✦ Ingeniero de Sistemas</div>
+        <h1>Diseño y desarrollo <span class="gradient-title">proyectos digitales</span> que mezclan lógica, estética y una identidad propia.</h1>
+        <p>
+          Soy Juan Gómez. Apasionado por crear nuevas experiencias que no se sientan genéricas: páginas web, prototipos, interfaces y proyectos técnicos que comuniquen bien la idea y al mismo tiempo se vean memorables. 
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn btn-secondary" href="#contacto">Trabajemos juntos</a>
+        </div>
+        <div class="mini-pills">
+          <span class="mini-pill">💻 desarrollo web</span>
+          <span class="mini-pill">🧠 lógica y algoritmos</span>
+          <span class="mini-pill">🎨 interfaces con personalidad</span>
+        </div>
+      </div>
+
+      <div class="hero-side reveal visible">
+        <article class="showcase-panel">
+          <div class="showcase-top">
+            <div class="dot-row"><span></span><span></span><span></span></div>
+            <div class="muted" style="font-size:.9rem;">/portfolio/profile.ts</div>
+          </div>
+          <div class="showcase-content">
+            <div class="code-block">
+              <div><span class="code-key">const</span> <span class="code-accent">Juan</span> = {</div>
+              <div>&nbsp;&nbsp;role: <span class="code-value">"Systems Engineer in progress"</span>,</div>
+              <div>&nbsp;&nbsp;likes: [<span class="code-value">"clean logic"</span>, <span class="code-value">"good visuals"</span>],</div>
+              <div>&nbsp;&nbsp;stack: [<span class="code-value">"HTML"</span>, <span class="code-value">"CSS"</span>, <span class="code-value">"JavaScript"</span>, <span class="code-value">"Java"</span>, <span class="code-value">"C++"</span> <span class="code-value"> "Lua"</span>],</div>
+              <div>&nbsp;&nbsp;goal: <span class="code-value">"build useful things with style"</span></div>
+              <div>};</div>
+              <br />
+              <div><span class="code-note">// la idea no es solo programar,</span></div>
+              <div><span class="code-note">// sino disfrutar del proceso y desbordarse de creatividad</span></div>
+            </div>
+            <div class="preview-grid">
+              <div class="preview-card">
+                <strong>Portafolio + vitrina</strong>
+                <p class="small">Un espacio para mostrar proyectos, servicios, demos y una identidad visual más personal.</p>
+                <span>listo para publicar</span>
+              </div>
+              <div class="preview-card">
+                <strong>Dirección visual propia</strong>
+                <p class="small">Colores más cálidos, composición menos rígida y un estilo menos típico que el azul-violeta estándar.</p>
+                <span>menos plantilla</span>
+              </div>
+            </div>
+          </div>
+          <div class="floating-sticker">hecho para destacar, no para parecer genérico</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2>¿Para que es todo esto?</h2>
+        </div>
+      </div>
+
+      <div class="about-band">
+        <article class="feature-card reveal">
+          <h3>Qué quiero proyectar</h3>
+          <p>No solamente mi conocimiento en programación, sino que también me importa cómo se presenta una solución. Para mí, un buen proyecto integra la lógica, la interfaz y la sensación que deja cuando alguien lo explora.</p>
+        </article>
+        <article class="feature-card reveal">
+          <h3>Cómo se traduce eso aquí</h3>
+          <p>Tipografía con más intención, bloques menos rígidos, colores menos genéricos, secciones con ritmo visual y un fondo animado de símbolos tecnológicos que mantiene el ambiente dev sin verse repetitivo.</p>
+        </article>
+      </div>
+
+      <div class="metric-row">
+        <div class="metric reveal">
+          <strong id="statProjects">0</strong>
+          <span class="muted">Proyectos visibles</span>
+        </div>
+        <div class="metric reveal">
+          <strong>5+</strong>
+          <span class="muted">Tecnologías principales</span>
+        </div>
+        <div class="metric reveal">
+          <strong>+3.000</strong>
+          <span class="muted">Horas de experiencia</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2>Lenguajes y herramientas</h2>
+          <p>Estas son las principales herramientas y lenguajes donde más experiencia tengo y en las que más me enfoco</p>
+        </div>
+      </div>
+
+      <div class="stack-grid">
+        <article class="stack-card reveal">
+          <div class="stack-icon">🌐</div>
+          <h3>Frontend web</h3>
+          <p>HTML, CSS y JavaScript para construir sitios, landing pages, portafolios y experiencias interactivas con una base sólida.</p>
+        </article>
+        <article class="stack-card reveal">
+          <div class="stack-icon">☕</div>
+          <h3>Java</h3>
+          <p>Programación orientada a objetos, lógica, estructuras y proyectos académicos con enfoque más estructurado.</p>
+        </article>
+        <article class="stack-card reveal">
+          <div class="stack-icon">⚙️</div>
+          <h3>C++</h3>
+          <p>Algoritmos, eficiencia, estructuras de datos y problemas donde la lógica predomina sobre la interfaz.</p>
+        </article>
+        <article class="stack-card reveal">
+          <div class="stack-icon">🗃️</div>
+          <h3>Datos y organización</h3>
+          <p>Bases de datos, estructura de información y pensamiento orientado a resolver problemas de forma clara.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="proyectos" class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2>Proyectos</h2>
+          <p>Aquí están algunos de mis proyectos personales y académicos útiles para el desarrollo de software.</p>
+        </div>
+      </div>
+
+      <div class="toolbar reveal">
+        <input id="searchInput" type="text" placeholder="Buscar proyecto..." />
+        <select id="categoryFilter">
+          <option value="todos">Todas las categorías</option>
+        </select>
+        <button class="btn" id="clearFilters">Limpiar</button>
+      </div>
+
+      <div id="projectsGrid" class="grid"></div>
+    </section>
+
+    <section id="proceso" class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2>Cómo trabajo</h2>
+          <p>Te enseño como me organizo antes de empezar a desarrollar las mejores soluciones a tus problemas.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-card reveal">
+          <div class="step">Paso 01</div>
+          <h3>Comprender la idea</h3>
+          <p>Primero analizo el problema. Entiendo y separo lo qué necesita la persona, qué quiere comunicar y qué tipo de solución realmente es la más óptima.</p>
+        </article>
+        <article class="timeline-card reveal">
+          <div class="step">Paso 02</div>
+          <h3>Estructurar la solución</h3>
+          <p>Organizo contenido, flujo, lógica, estilo visual y jerarquía para que el proyecto tenga una base coherente desde el inicio.</p>
+        </article>
+        <article class="timeline-card reveal">
+          <div class="step">Paso 03</div>
+          <h3>Construir y pulir</h3>
+          <p>Desarrollo, pruebo y ajusto detalles para que el resultado no solo funcione bien, sino que también se sienta bien al usarlo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="publicar" class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2>Agregar o editar tus proyectos</h2>
+          <p>Esta versión guarda los proyectos en el navegador para que puedas empezar gratis. Luego, si quieres, la conectamos a una base de datos o a pagos reales.</p>
+        </div>
+      </div>
+
+      <div class="panel reveal">
+        <label class="admin-toggle">
+          <input type="checkbox" id="toggleAdmin" />
+          <span>Mostrar panel para agregar proyectos</span>
+        </label>
+
+        <div class="admin-panel" id="adminPanel">
+          <div class="form-grid">
+            <input id="titleInput" type="text" placeholder="Nombre del proyecto" />
+            <input id="priceInput" type="text" placeholder="Precio. Ej: $120.000 COP" />
+            <input id="categoryInput" type="text" placeholder="Categoría. Ej: Web, Código, Diseño" />
+            <input id="emojiInput" type="text" placeholder="Emoji. Ej: 💻" maxlength="4" />
+            <input id="imageInput" class="full" type="text" placeholder="URL de imagen (opcional). Si no pones una, se usa el emoji." />
+            <textarea id="descriptionInput" class="full" placeholder="Descripción del proyecto"></textarea>
+            <input id="tagsInput" class="full" type="text" placeholder="Etiquetas separadas por coma. Ej: JavaScript, UI, Responsive" />
+            <input id="linkInput" class="full" type="text" placeholder="Link demo o archivo del proyecto (opcional)" />
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+            <button class="btn btn-primary" id="addProjectBtn">Guardar proyecto</button>
+            <button class="btn" id="resetProjectsBtn">Restaurar proyectos de ejemplo</button>
+      </div>
+    </section>
+
+    <section id="contacto" class="container">
+      <div class="section-head reveal">
+        <div>
+          <h2>Contacto</h2>
+          <p>Si quieres más información sobre la compra de un producto, pedir una personalización o dejarme alguna sugerencia, no dudes en contactarme! </p>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <div class="contact-box reveal">
+          <h3 style="margin-top:0; font-size:1.4rem;">Conectemos</h3>
+          <div class="contact-list">
+            <div class="contact-item">
+              <div>📧</div>
+              <div>
+                <strong>Correo</strong>
+                <span class="muted">jngz0817@gmail.com</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div>💬</div>
+              <div>
+                <strong>WhatsApp</strong>
+                <span class="muted">+57 310 639 2901</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div>💼</div>
+              <div>
+                <strong>GitHub / LinkedIn</strong>
+                <span class="muted">@dhruv-0x</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="panel reveal" id="contactForm">
+          <div class="form-grid">
+            <input required id="nameField" type="text" placeholder="Tu nombre" />
+            <input required id="emailField" type="email" placeholder="Tu correo" />
+            <input id="subjectField" class="full" type="text" placeholder="Asunto" />
+            <textarea required id="messageField" class="full" placeholder="Cuéntame qué proyecto te interesa o qué necesitas."></textarea>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+            <button class="btn btn-primary" type="submit">Enviar por correo</button>
+            <a class="btn btn-secondary" id="whatsappBtn" href="#">Enviar por WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Juan Gómez · Portafolio Personal.</div>
+  </footer>
+
+  <div class="modal" id="projectModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <span class="pill" id="modalCategory">Categoría</span>
+          <h3 id="modalTitle" style="margin:12px 0 8px; font-size:1.85rem;"></h3>
+          <div class="price" id="modalPrice" style="display:inline-flex;"></div>
+        </div>
+        <button class="modal-close" id="closeModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="modalMedia" class="card-media" style="border-radius:22px; margin-bottom:16px;"></div>
+        <p id="modalDescription" class="small" style="font-size:1rem;"></p>
+        <div id="modalTags" class="tag-row"></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+          <a id="modalLink" class="btn" href="#" target="_blank" rel="noopener">Ver demo</a>
+          <a id="modalContact" class="btn btn-primary" href="#contacto">Quiero este proyecto</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const defaultProjects = [
+      {
+        id: crypto.randomUUID(),
+        title: 'Portafolio web con identidad visual',
+        price: '$120.000 COP',
+        category: 'Web',
+        emoji: '🧩',
+        image: '',
+        description: 'Sitio personal con diseño expresivo, animaciones suaves y una estructura pensada para destacar proyectos y perfil profesional.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        link: '#'
+      },
+      {
+        id: crypto.randomUUID(),
+        title: 'Sistema de reservas simple',
+        price: '$150.000 COP',
+        category: 'Código',
+        emoji: '⚙️',
+        image: '',
+        description: 'Proyecto funcional enfocado en formularios, lógica y organización de reservas para pequeños negocios o servicios.',
+        tags: ['JavaScript', 'Lógica', 'Interfaz'],
+        link: '#'
+      },
+      {
+        id: crypto.randomUUID(),
+        title: 'Dashboard técnico o académico',
+        price: '$95.000 COP',
+        category: 'Diseño',
+        emoji: '📊',
+        image: '',
+        description: 'Interfaz visual para mostrar métricas, avances o resúmenes de proyectos con una estética más cuidada y personal.',
+        tags: ['UI', 'Visualización', 'Responsive'],
+        link: '#'
+      }
+    ];
+
+    const STORAGE_KEY = 'mis_proyectos_tienda';
+    const $ = (selector) => document.querySelector(selector);
+    const projectsGrid = $('#projectsGrid');
+    const searchInput = $('#searchInput');
+    const categoryFilter = $('#categoryFilter');
+    const statProjects = $('#statProjects');
+    const toggleAdmin = $('#toggleAdmin');
+    const adminPanel = $('#adminPanel');
+
+    let projects = loadProjects();
+
+    function loadProjects() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : structuredClone(defaultProjects);
+    }
+
+    function saveProjects() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    }
+
+    function escapeHtml(text = '') {
+      return text
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function getCategories() {
+      const cats = [...new Set(projects.map(p => p.category.trim()).filter(Boolean))];
+      return ['todos', ...cats];
+    }
+
+    function renderCategories() {
+      const current = categoryFilter.value || 'todos';
+      categoryFilter.innerHTML = getCategories()
+        .map(cat => `<option value="${escapeHtml(cat)}">${cat === 'todos' ? 'Todas las categorías' : escapeHtml(cat)}</option>`)
+        .join('');
+      categoryFilter.value = getCategories().includes(current) ? current : 'todos';
+    }
+
+    function filteredProjects() {
+      const q = searchInput.value.trim().toLowerCase();
+      const cat = categoryFilter.value;
+      return projects.filter(project => {
+        const matchesSearch = [project.title, project.description, project.category, ...(project.tags || [])]
+          .join(' ')
+          .toLowerCase()
+          .includes(q);
+        const matchesCategory = cat === 'todos' || project.category === cat;
+        return matchesSearch && matchesCategory;
+      });
+    }
+
+    function projectMedia(project) {
+      if (project.image) {
+        return `<div class="card-media"><img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" style="width:100%; height:100%; object-fit:cover;" /></div>`;
+      }
+      return `<div class="card-media">${escapeHtml(project.emoji || '📦')}</div>`;
+    }
+
+    function renderProjects() {
+      const list = filteredProjects();
+      statProjects.textContent = projects.length;
+
+      if (!list.length) {
+        projectsGrid.innerHTML = `<div class="empty">No hay proyectos que coincidan con tu búsqueda.</div>`;
+        return;
+      }
+
+      projectsGrid.innerHTML = list.map(project => `
+        <article class="card visible">
+          ${projectMedia(project)}
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <h3 style="margin:0 0 6px; font-size:1.24rem;">${escapeHtml(project.title)}</h3>
+                <div class="muted">${escapeHtml(project.category)}</div>
+              </div>
+              <div class="price">${escapeHtml(project.price)}</div>
+            </div>
+            <p class="small">${escapeHtml(project.description)}</p>
+            <div class="tag-row">
+              ${(project.tags || []).map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+            </div>
+            <div class="card-actions">
+              <button class="btn" onclick="openProject('${project.id}')">Ver más</button>
+              <a class="btn btn-primary" href="#contacto" onclick="prefillSubject('${escapeHtml(project.title)}')">Comprar / Preguntar</a>
+              <button class="btn" onclick="deleteProject('${project.id}')">Eliminar</button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function prefillSubject(title) {
+      $('#subjectField').value = `Estoy interesado en: ${title}`;
+      setTimeout(() => $('#messageField').focus(), 100);
+    }
+
+    window.prefillSubject = prefillSubject;
+
+    function openProject(id) {
+      const project = projects.find(p => p.id === id);
+      if (!project) return;
+      $('#modalCategory').textContent = project.category;
+      $('#modalTitle').textContent = project.title;
+      $('#modalPrice').textContent = project.price;
+      $('#modalDescription').textContent = project.description;
+      $('#modalMedia').innerHTML = project.image
+        ? `<img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" style="width:100%; height:100%; object-fit:cover;" />`
+        : escapeHtml(project.emoji || '📦');
+      $('#modalTags').innerHTML = (project.tags || []).map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
+      const modalLink = $('#modalLink');
+      modalLink.style.display = project.link ? 'inline-flex' : 'none';
+      modalLink.href = project.link || '#';
+      $('#modalContact').onclick = () => prefillSubject(project.title);
+      $('#projectModal').classList.add('active');
+    }
+
+    window.openProject = openProject;
+
+    function deleteProject(id) {
+      projects = projects.filter(p => p.id !== id);
+      saveProjects();
+      renderCategories();
+      renderProjects();
+    }
+
+    window.deleteProject = deleteProject;
+
+    $('#closeModal').addEventListener('click', () => $('#projectModal').classList.remove('active'));
+    $('#projectModal').addEventListener('click', (e) => {
+      if (e.target.id === 'projectModal') $('#projectModal').classList.remove('active');
+    });
+
+    function addProject() {
+      const title = $('#titleInput').value.trim();
+      const price = $('#priceInput').value.trim();
+      const category = $('#categoryInput').value.trim();
+      const emoji = $('#emojiInput').value.trim() || '📦';
+      const image = $('#imageInput').value.trim();
+      const description = $('#descriptionInput').value.trim();
+      const tags = $('#tagsInput').value.split(',').map(t => t.trim()).filter(Boolean);
+      const link = $('#linkInput').value.trim();
+
+      if (!title || !price || !category || !description) {
+        alert('Completa al menos nombre, precio, categoría y descripción.');
+        return;
+      }
+
+      projects.unshift({
+        id: crypto.randomUUID(),
+        title,
+        price,
+        category,
+        emoji,
+        image,
+        description,
+        tags,
+        link
+      });
+
+      saveProjects();
+      renderCategories();
+      renderProjects();
+      document.querySelectorAll('#adminPanel input, #adminPanel textarea').forEach(el => el.value = '');
+    }
+
+    $('#addProjectBtn').addEventListener('click', addProject);
+    $('#resetProjectsBtn').addEventListener('click', () => {
+      if (!confirm('¿Seguro que quieres restaurar los proyectos de ejemplo?')) return;
+      projects = structuredClone(defaultProjects);
+      saveProjects();
+      renderCategories();
+      renderProjects();
+    });
+
+    toggleAdmin.addEventListener('change', () => {
+      adminPanel.classList.toggle('active', toggleAdmin.checked);
+    });
+
+    searchInput.addEventListener('input', renderProjects);
+    categoryFilter.addEventListener('change', renderProjects);
+    $('#clearFilters').addEventListener('click', () => {
+      searchInput.value = '';
+      categoryFilter.value = 'todos';
+      renderProjects();
+    });
+
+    $('#contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = $('#nameField').value.trim();
+      const email = $('#emailField').value.trim();
+      const subject = $('#subjectField').value.trim() || 'Consulta desde mi sitio web';
+      const message = $('#messageField').value.trim();
+      const body = `Nombre: ${name}%0D%0ACorreo: ${email}%0D%0A%0D%0AMensaje:%0D%0A${encodeURIComponent(message)}`;
+      window.location.href = `mailto:tucorreo@ejemplo.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    });
+
+    $('#whatsappBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const name = $('#nameField').value.trim() || 'Hola';
+      const subject = $('#subjectField').value.trim() || 'Consulta';
+      const message = $('#messageField').value.trim() || 'Quiero más información sobre tus proyectos.';
+      const text = `${name}%0A${subject}%0A${message}`;
+      window.open(`https://wa.me/573000000000?text=${text}`, '_blank');
+    });
+
+    function revealOnScroll() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    function buildFloatingSymbols() {
+      const container = $('#floatingCode');
+      container.innerHTML = '';
+      const symbols = [
+        'HTML', 'CSS', 'JS', 'Java', 'C++', 'SQL', '{ }', '</>', 'if()', 'while()', 'class', 'return', 'function()', '[]', '=>', 'git', 'API', 'OOP', 'node', 'logic'
+      ];
+      const palette = ['var(--peach)', 'var(--apricot)', 'var(--mint)', 'var(--sky)', 'var(--orchid)', 'var(--rose)'];
+
+      symbols.forEach((symbol, index) => {
+        const item = document.createElement('span');
+        item.className = 'symbol';
+        item.textContent = symbol;
+        item.style.left = `${Math.random() * 92}%`;
+        item.style.top = `${Math.random() * 92}%`;
+        item.style.fontSize = `${1 + Math.random() * 1.8}rem`;
+        item.style.color = palette[index % palette.length];
+        item.style.setProperty('--duration', `${18 + Math.random() * 20}s`);
+        item.style.setProperty('--x1', `${-20 + Math.random() * 40}px`);
+        item.style.setProperty('--y1', `${-25 + Math.random() * 50}px`);
+        item.style.setProperty('--x2', `${-35 + Math.random() * 70}px`);
+        item.style.setProperty('--y2', `${-35 + Math.random() * 70}px`);
+        item.style.setProperty('--x3', `${-30 + Math.random() * 60}px`);
+        item.style.setProperty('--y3', `${-30 + Math.random() * 60}px`);
+        item.style.setProperty('--x4', `${-25 + Math.random() * 50}px`);
+        item.style.setProperty('--y4', `${-25 + Math.random() * 50}px`);
+        item.style.animationDelay = `${-index * 1.4}s`;
+        container.appendChild(item);
+      });
+    }
+
+    $('#year').textContent = new Date().getFullYear();
+    renderCategories();
+    renderProjects();
+    revealOnScroll();
+    buildFloatingSymbols();
+  </script>
+</body>
+</html>
