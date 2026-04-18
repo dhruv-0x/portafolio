@@ -13,6 +13,6 @@ window.PROJECTS = [
     longDescription: 'Portafolio diseñado para presentar habilidades, proyectos y servicios de forma clara, visual y profesional.',
     tags: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
     demo: 'https://tusitio.com',
-    repo: 'https://github.com/tuusuario/turepo'
+    repo: 'https://github.com/dhruv-0x/portafolio'
   }
 ];
