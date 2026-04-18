@@ -1,18 +1,18 @@
 window.PROJECTS = [
   {
-    id: 'portafolio-web',
-    title: 'Portafolio web profesional',
+    id: 'mta-resource',
+    title: 'Sistema de basurero Cooperativo para MTA San Andreas.',
     subtitle: 'Landing personal para mostrar servicios y trabajos',
-    category: 'Web',
-    type: 'Frontend',
+    category: 'Game Design',
+    type: 'Backend',
     price: 'Desde $150.000 COP',
     emoji: '💼',
-    image: '',
+    image: 'img/proyecto1.png',
     featured: true,
-    description: 'Sitio pensado para mostrar perfil, stack y proyectos con una estética moderna.',
-    longDescription: 'Portafolio diseñado para presentar habilidades, proyectos y servicios de forma clara, visual y profesional.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive'],
-    demo: 'https://tusitio.com',
-    repo: 'https://github.com/dhruv-0x/portafolio'
+    description: 'Script optimizado para trabajos grupales con sistema de rutas dinámicas y recompensas compartidas.',
+    longDescription: 'Implementa recolección visual sincronizada mediante vehículos seleccionados y lógica de sincronización entre jugadores.',
+    tags: ['LUA', 'MTA API', 'OOP'],
+    demo: '',
+    repo: ''
   }
 ];
