@@ -29,7 +29,7 @@ window.PROJECTS = [
     description: 'Pagina virtual para un cliente mayorista',
     longDescription: 'La tienda virtual del barrio',
     tags: ['JavaScript', 'Supabase', 'Web development'],
-    demo: '',
+    demo: 'https://www.youtube.com/watch?v=2b1ozCLrnCs',
     repo: ''
   }
   
