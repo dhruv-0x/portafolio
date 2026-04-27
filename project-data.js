@@ -14,5 +14,23 @@ window.PROJECTS = [
     tags: ['LUA', 'MTA API', 'OOP'],
     demo: '',
     repo: ''
+  },
+
+  {
+    id: 'eCommerce-Virtual-store',
+    title: 'Tienda virtual con venta de productos fisicos.',
+    subtitle: 'chachacha',
+    category: 'Web Development',
+    type: 'Scripting',
+    price: 'Desde $5.200.000 COP',
+    emoji: '💻',
+    image: '',
+    featured: true,
+    description: 'Pagina virtual para un cliente mayorista',
+    longDescription: 'La tienda virtual del barrio',
+    tags: ['JavaScript', 'Supabase', 'Web development'],
+    demo: '',
+    repo: ''
   }
+  
 ];
